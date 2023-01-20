@@ -49,7 +49,7 @@ export function Main({navigation}) {
           style={styles.button}
           onPress={() => mainHandle()}
           >
-          <Text style={styles.buttonText}>Log In</Text>
+          <Text style={styles.buttonText}>Log In d</Text>
         </TouchableOpacity>
         <Text style={{color: '#9848FF', paddingVertical: 30}}>Sign In</Text>
         <Text style={{color: 'gray'}}>Forgot your password?</Text>
