@@ -1,3 +1,4 @@
+import { NavigationHelpersContext } from '@react-navigation/native';
 import React, {useState} from 'react';
 import {
   StyleSheet,
@@ -10,10 +11,13 @@ import {
 function Main({navigation}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const usermail = "jondoe@gmail.com";
+  const userpassword = "jondoe123";
 
   function handleLogin() {
-    // Perform login logic here
-    console.log(email, password);
+    if (email === usermail && password === userpassword) {
+      navigation.navigate('Page2')
+    }
   }
 
   return (
@@ -38,8 +42,8 @@ function Main({navigation}) {
           placeholder="Enter your password"
           secureTextEntry={true}
         />
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Page2')}>
-          <Text style={styles.buttonText}>Sign Up</Text>
+        <TouchableOpacity style={styles.button} onPress={() => handleLogin()}>
+          <Text style={styles.buttonText}>Log In</Text>
         </TouchableOpacity>
         <Text style={{color: '#F2515A', paddingVertical: 20}}>Sign In</Text>
         <Text>Forgot your password?</Text>
