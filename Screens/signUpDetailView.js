@@ -1,8 +1,9 @@
 /* eslint-disable prettier/prettier */
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import {TextInput, View, StyleSheet, TouchableOpacity, Text} from 'react-native';
 
-export default function SignUpDetailView() {
+export default function SignUpDetailView({navigation}) {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <View style={detailStyles.container}>
@@ -11,7 +12,7 @@ export default function SignUpDetailView() {
       <TextInput style={detailStyles.input}>Consumer Number</TextInput>
       </View>
       <View style={detailStyles.container3}>
-      <TouchableOpacity style={detailStyles.button} onPress={SignUpDetailView}>
+      <TouchableOpacity style={detailStyles.button} onPress={() => navigation.navigate('Page4')}>
           <Text style={detailStyles.oneText2}>Add your delivery location</Text>
         </TouchableOpacity>
         </View>

@@ -7,7 +7,7 @@ import {
   Text,
 } from 'react-native';
 
-export default function signupAddress() {
+export default function SignupAddress({navigation}) {
   return (
     <View>
       <View style={detailStyles.container}>
@@ -26,7 +26,7 @@ export default function signupAddress() {
       </View>
 
       <View style={detailStyles.container3}>
-        <TouchableOpacity style={detailStyles.button}>
+        <TouchableOpacity style={detailStyles.button} onPress={() => navigation.navigate('Page4')}>
           <Text style={detailStyles.oneText}>Add your delivery location</Text>
         </TouchableOpacity>
       </View>

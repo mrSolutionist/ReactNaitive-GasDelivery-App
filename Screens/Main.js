@@ -1,6 +1,4 @@
 import React, {useState} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
   StyleSheet,
   Text,
@@ -9,7 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-function Main() {
+function Main({navigation}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -40,13 +38,7 @@ function Main() {
           placeholder="Enter your password"
           secureTextEntry={true}
         />
-        {/* <TouchableOpacity style={styles.button} onPress={handleLogin}>
-          <Text style={styles.buttonText}>Sign Up</Text>
-        </TouchableOpacity>
-        <Text style={{color: '#F2515A', paddingVertical: 20}}>Sign In</Text>
-        <Text>Forgot your password?</Text> */}
-
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Page 2')}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Page2')}>
           <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>
         <Text style={{color: '#F2515A', paddingVertical: 20}}>Sign In</Text>
