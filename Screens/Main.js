@@ -1,5 +1,6 @@
-import { NavigationHelpersContext } from '@react-navigation/native';
+import {NavigationHelpersContext} from '@react-navigation/native';
 import React, {useState} from 'react';
+import OtpPopup from './otpPopup';
 import {
   StyleSheet,
   Text,
@@ -9,15 +10,16 @@ import {
 } from 'react-native';
 
 function Main({navigation}) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const usermail = "jondoe@gmail.com";
-  const userpassword = "jondoe123";
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [modalVisible, setModalVisible] = useState(false);
 
-  function handleLogin() {
-    if (email === usermail && password === userpassword) {
-      navigation.navigate('Page2')
+  function Login(num) {
+    if (num.length == 10) {
+    setModalVisible(true)
     }
+    // if (email === usermail && password === userpassword) {
+    //   navigation.navigate('Page2')
+    // }
   }
 
   return (
@@ -28,26 +30,22 @@ function Main({navigation}) {
       <View style={styles.container2}>
         <TextInput
           style={styles.input}
-          value={email}
-          onChangeText={text => setEmail(text)}
-          placeholder="Enter your Username"
+          value={phoneNumber}
+          onChangeText={text => setPhoneNumber(text)}
+          placeholder="Enter your Phone Number"
           autoCapitalize="none"
           keyboardType="email-address"
         />
         {/* <Text style={styles.label}>Password</Text> */}
-        <TextInput
-          style={styles.input}
-          value={password}
-          onChangeText={text => setPassword(text)}
-          placeholder="Enter your password"
-          secureTextEntry={true}
-        />
-        <TouchableOpacity style={styles.button} onPress={() => handleLogin()}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => Login(phoneNumber)}>
           <Text style={styles.buttonText}>Log In</Text>
         </TouchableOpacity>
         <Text style={{color: '#F2515A', paddingVertical: 20}}>Sign In</Text>
         <Text>Forgot your password?</Text>
       </View>
+      <OtpPopup modalVisible={modalVisible} setModalVisible={setModalVisible} />
     </View>
   );
 }

@@ -1,42 +1,36 @@
 import React, {useState} from 'react';
-import {Alert, Modal, StyleSheet, Text, Pressable, View, TextInput} from 'react-native';
+import {
+  Alert,
+  Modal,
+  StyleSheet,
+  Text,
+  Pressable,
+  View,
+  TextInput,
+} from 'react-native';
 
-export const OtpPopup = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+export const OtpPopup = ({modalVisible, setModalVisible}) => {
+  // const [modalVisible, setModalVisible] = useState(true);
   return (
-    <View style={styles.centeredView}>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
-          setModalVisible(!modalVisible);
-        }}>
-        <View style={styles.modalViewmain}>
-          <View style={styles.modalView}>
-            <Text style={styles.oneText}>Enter OTP</Text>
-            <View style={styles.inputview}>
+    <Modal animationType="slide" transparent={true} visible={modalVisible}>
+      <View style={styles.modalViewmain}>
+        <View style={styles.modalView}>
+          <Text style={styles.oneText}>Enter OTP</Text>
+          <View style={styles.inputview}>
             <TextInput style={styles.input} />
             <TextInput style={styles.input} />
             <TextInput style={styles.input} />
             <TextInput style={styles.input} />
-            </View>
-            <Pressable
-              style={[styles.button1, styles.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}>
-              <Text style={styles.textStyle}>Hide Modal</Text>
-            </Pressable>
-            <Text style={styles.modalText}>Resent OTP</Text>
           </View>
+          <Pressable
+            style={[styles.button1, styles.buttonClose]}
+            onPress={() => setModalVisible(false)}>
+            <Text style={styles.textStyle}>Hide Modal</Text>
+          </Pressable>
+          <Text style={styles.modalText}>Resent OTP</Text>
         </View>
-      </Modal>
-      <Pressable
-        style={[styles.button, styles.buttonOpen]}
-        onPress={() => setModalVisible(true)}>
-        <Text style={styles.textStyle}>Show Modal</Text>
-      </Pressable>
-    </View>
+      </View>
+    </Modal>
   );
 };
 
@@ -58,8 +52,8 @@ const styles = StyleSheet.create({
   modalView: {
     // margin: 20,
     backgroundColor: 'white',
-   borderTopEndRadius: 20,
-   borderTopStartRadius: 20,
+    borderTopEndRadius: 20,
+    borderTopStartRadius: 20,
     padding: 35,
     alignItems: 'center',
     // justifyContent: 'flex-end',
