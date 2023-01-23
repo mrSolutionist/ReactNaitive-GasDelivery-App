@@ -1,26 +1,29 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
 import OTPView from './OTPscreen';
 // import {useNavigation} from '@react-navigation/native';
 import {
-  Button,
+  // Button,
   // Modal,
   StyleSheet,
   Text,
   View,
   TextInput,
   TouchableOpacity,
+  Pressable,
 } from 'react-native';
 
-export function Main({navigation}) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [modalVisible, setModalVisible] = useState(false);
+export function Main() {
+  const [number, setPhoneNumber] = useState('');
+  const [modalVisible, setModalVisible] = useState(true);
 
-  function mainHandle() {
-    // Perform login logic here
-    console.log(email, password);
+  function otpLogin() {
+    if (number.length == 10){
+      setModalVisible(true);
+      console.log('dsdfeere');
+    }
+    
   }
-  // const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.headerTextContainer}>
@@ -30,31 +33,21 @@ export function Main({navigation}) {
       <View style={styles.inputFieldContainer}>
         <TextInput
           style={styles.input}
-          value={email}
-          onChangeText={text => setEmail(text)}
-          placeholder="Enter your email"
+          value={number}
+          onChangeText={text => setPhoneNumber(text)}
+          placeholder="Enter your phone umber"
           autoCapitalize="none"
-          keyboardType="email-address"
+          keyboardType="default"
         />
-
-        <TextInput
-          style={styles.input}
-          value={password}
-          onChangeText={text => setPassword(text)}
-          placeholder="Enter your password"
-          secureTextEntry={true}
-        />
-      
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => mainHandle()}
-          >
-          <Text style={styles.buttonText}>Log In d</Text>
-        </TouchableOpacity>
+        <Pressable style={styles.button} onPress={otpLogin}>
+          <Text>login</Text>
+        </Pressable>
         <Text style={{color: '#9848FF', paddingVertical: 30}}>Sign In</Text>
+
         <Text style={{color: 'gray'}}>Forgot your password?</Text>
       </View>
-      {/* <OTPView ></OTPView> */}
+
+      <OTPView modalVisible={modalVisible} setModalVisible={setModalVisible} />
     </View>
   );
 }
@@ -65,7 +58,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-end',
     // padding: 16,
-    backgroundColor: '#B493EC',
+    backgroundColor: '#F2515A',
   },
   label: {
     fontSize: 16,
@@ -76,7 +69,8 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     padding: 8,
     marginBottom: 16,
-    height: 55.5,
+    paddingVertical: 10,
+    // height: 55.5,
     width: '100%',
     fontSize: 16,
     borderRadius: 12,
@@ -91,7 +85,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   buttonText: {
-    color: '#fff',
+    color: 'black',
     fontWeight: 'bold',
     fontSize: 16,
   },

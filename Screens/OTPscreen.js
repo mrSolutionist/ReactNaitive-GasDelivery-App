@@ -1,58 +1,56 @@
+/* eslint-disable react-native/no-inline-styles */
+import { useNavigation } from '@react-navigation/native';
 import React, {useState} from 'react';
 import {
-  Alert,
   Modal,
   StyleSheet,
   Text,
-  Pressable,
   View,
   TextInput,
-  Button,
+  TouchableOpacity,
 } from 'react-native';
 
-export const OTPView = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+export const OTPView = ({modalVisible, setModalVisible}) => {
+  const navigation = useNavigation()
+  const userExists = false;
+  function navigateToNextPage(){
+    if (userExists){
+      // setModalVisible(false);
+    }
+    else{
+      setModalVisible(false);
+      navigation.navigate('detail')
+    }
+   
+  }
   return (
-    <View style={styles.centeredView}>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
-          setModalVisible(!modalVisible);
-        }}>
-        <View style={styles.centeredView1}>
-          <View style={styles.modalView}>
-            <Text style={styles.textStyle}>Enter OTP</Text>
-            <View
-              style={{
-                justifyContent: 'space-between',
-                alignContent: 'stretch',
-                flexDirection: 'row',
-                margin: 10,
-              }}>
-              <TextInput style={styles.otpInput}> </TextInput>
-              <TextInput style={styles.otpInput}> </TextInput>
-              <TextInput style={styles.otpInput}> </TextInput>
-              <TextInput style={styles.otpInput}> </TextInput>
-            </View>
-
-            <Pressable
-              style={[styles.button, styles.buttonOpen]}
-              // onPress={() => setModalVisible(true)}
-            >
-              <Text style={{color: 'white', fontSize: 16, fontWeight: 'bold'}}>Verify</Text>
-            </Pressable>
+    <Modal animationType="slide" transparent={true} visible={modalVisible}>
+      <View style={styles.centeredView1}>
+        <View style={styles.modalView}>
+          <Text style={styles.textStyle}>Enter OTP</Text>
+          <View
+            style={{
+              justifyContent: 'space-between',
+              alignContent: 'stretch',
+              flexDirection: 'row',
+              margin: 10,
+            }}>
+            <TextInput style={styles.otpInput}> </TextInput>
+            <TextInput style={styles.otpInput}> </TextInput>
+            <TextInput style={styles.otpInput}> </TextInput>
+            <TextInput style={styles.otpInput}> </TextInput>
           </View>
+
+          <TouchableOpacity
+            style={[styles.button]}
+            onPress={() =>navigateToNextPage()}>
+            <Text style={{color: 'white', fontSize: 16, fontWeight: 'bold'}}>
+              Verify
+            </Text>
+          </TouchableOpacity>
         </View>
-      </Modal>
-      <Pressable
-        style={[styles.button, styles.buttonOpen]}
-        onPress={() => setModalVisible(true)}>
-        <Text style={styles.textStyle}>Show Modal</Text>
-      </Pressable>
-    </View>
+      </View>
+    </Modal>
   );
 };
 
@@ -76,6 +74,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
     marginTop: 22,
+    // backgroundColor: 'rgba(52, 52, 52, 0.8)',
   },
   modalView: {
     flex: 0.5,

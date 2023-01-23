@@ -5,11 +5,11 @@ import {SignUpDetailView} from './Screens/signUpDetail';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-const GasDelivery: () => Node = () => {
+const GasDelivery = () => {
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName='main'>
         <Stack.Screen name="main" component={Main} />
         <Stack.Screen name="detail" component={SignUpDetailView} />
       </Stack.Navigator>
